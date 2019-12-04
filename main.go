@@ -3,7 +3,7 @@ package main
 import (
 	"html/template"
 	"net/http"
-	"projects/admindev/controllers"
+	"projects/admindev2/controllers"
 )
 
 var tpl *template.Template
