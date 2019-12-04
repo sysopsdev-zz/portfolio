@@ -15,6 +15,7 @@ func init() {
 func main() {
 	c := controllers.NewController(tpl)
 	http.HandleFunc("/", c.Index)
+	http.HandleFunc("/about", c.About)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":3000", nil)
 }

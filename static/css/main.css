@@ -1,3 +1,49 @@
 body {
+    letter-spacing: 0.05em;
+/*  font-family: 'Source Code Pro', monospace;*/
     text-align: center;
 }
+
+a i {
+    color: black;
+}
+
+.content {
+  margin: auto;
+  width: 80%;
+  text-align: left;
+  overflow-y: overlay;
+}
+
+.center {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    overflow-y: overlay;
+    text-align: center;
+}
+
+.hero-image {
+	/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('computer.jpg');
+
+  /* Set a specific height */
+	height: 50%;
+
+	/* Position and center the image to scale nicely on all screens */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
