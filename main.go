@@ -16,10 +16,23 @@ func init() {
 
 func main() {
 	c := controllers.NewController(tpl)
-	http.HandleFunc("/", c.Index)
-	http.HandleFunc("/about", c.About)
-	http.HandleFunc("/resume", c.Resume)
-	http.HandleFunc("/podcast", c.Podcast)
+	index := http.HandlerFunc(c.Index)
+	about := http.HandlerFunc(c.About)
+	resume := http.HandlerFunc(c.Resume)
+	podcast := http.HandlerFunc(c.Podcast)
+
+	http.Handle("/", loggingFunc(index))
+	http.Handle("/about", loggingFunc(about))
+	http.Handle("/resume", loggingFunc(resume))
+	http.Handle("/podcast", loggingFunc(podcast))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	http.ListenAndServe(":5000", handlers.LoggingHandler(os.Stdout, http.DefaultServeMux))
+	http.ListenAndServe(":5000", nil)
+}
+
+func loggingFunc(h http.Handler) http.Handler {
+	logFile, err := os.OpenFile("admindev.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0640)
+	if err != nil {
+		panic(err)
+	}
+	return handlers.LoggingHandler(logFile, h)
 }
