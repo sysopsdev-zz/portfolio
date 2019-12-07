@@ -1,0 +1,7 @@
+## 1.0 
+- Site functioning and working under Node.js
+
+
+## 2.0 
+- Site refactored into Golang. 
+- Current status: Behavior same as under the Node.js program. 
