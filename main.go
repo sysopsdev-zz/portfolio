@@ -1,8 +1,10 @@
 package main
 
 import (
+	"github.com/gorilla/handlers"
 	"html/template"
 	"net/http"
+	"os"
 	"projects/admindev2/controllers"
 )
 
@@ -16,6 +18,8 @@ func main() {
 	c := controllers.NewController(tpl)
 	http.HandleFunc("/", c.Index)
 	http.HandleFunc("/about", c.About)
+	http.HandleFunc("/resume", c.Resume)
+	http.HandleFunc("/podcast", c.Podcast)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	http.ListenAndServe(":5000", nil)
+	http.ListenAndServe(":5000", handlers.LoggingHandler(os.Stdout, http.DefaultServeMux))
 }

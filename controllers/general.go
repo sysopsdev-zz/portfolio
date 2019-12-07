@@ -20,3 +20,11 @@ func (c Controller) Index(w http.ResponseWriter, req *http.Request) {
 func (c Controller) About(w http.ResponseWriter, req *http.Request) {
 	c.tpl.ExecuteTemplate(w, "about.gohtml", nil)
 }
+
+func (c Controller) Resume(w http.ResponseWriter, req *http.Request) {
+	c.tpl.ExecuteTemplate(w, "resume.gohtml", nil)
+}
+
+func (c Controller) Podcast(w http.ResponseWriter, req *http.Request) {
+	c.tpl.ExecuteTemplate(w, "podcast.gohtml", nil)
+}
