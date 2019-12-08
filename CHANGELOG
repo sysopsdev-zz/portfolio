@@ -5,3 +5,7 @@
 ## 2.0 
 - Site refactored into Golang. 
 - Current status: Behavior same as under the Node.js program. 
+
+## 2.0.1
+- Added error page for path not existing
+- Fixed active tags in nav section
