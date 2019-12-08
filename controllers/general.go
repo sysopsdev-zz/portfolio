@@ -14,17 +14,41 @@ func NewController(t *template.Template) *Controller {
 }
 
 func (c Controller) Index(w http.ResponseWriter, req *http.Request) {
+	if req.URL.Path != "/" {
+		c.tpl.ExecuteTemplate(w, "notFound.gohtml", nil)
+		return
+	}
 	c.tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
 
 func (c Controller) About(w http.ResponseWriter, req *http.Request) {
+	if req.URL.Path != "/about" {
+		c.tpl.ExecuteTemplate(w, "notFound.gohtml", nil)
+		return
+	}
 	c.tpl.ExecuteTemplate(w, "about.gohtml", nil)
 }
 
 func (c Controller) Resume(w http.ResponseWriter, req *http.Request) {
+	if req.URL.Path != "/resume" {
+		c.tpl.ExecuteTemplate(w, "notFound.gohtml", nil)
+		return
+	}
 	c.tpl.ExecuteTemplate(w, "resume.gohtml", nil)
 }
 
 func (c Controller) Podcast(w http.ResponseWriter, req *http.Request) {
+	if req.URL.Path != "/podcast" {
+		c.tpl.ExecuteTemplate(w, "notFound.gohtml", nil)
+		return
+	}
 	c.tpl.ExecuteTemplate(w, "podcast.gohtml", nil)
+}
+
+func (c Controller) NotFound(w http.ResponseWriter, req *http.Request, status int) {
+	w.WriteHeader(status)
+	if status == http.StatusNotFound {
+		c.tpl.ExecuteTemplate(w, "notFound.gohtml", nil)
+		return
+	}
 }
