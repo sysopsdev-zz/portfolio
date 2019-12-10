@@ -7,28 +7,65 @@ else
         is_running=false
 fi
 
-if [ $1 == "status" ]; then
-        if [ $is_running = true ]; then
-                echo "App is running"
-        else
-                echo "App is not running"
-        fi
-fi
+status()
+{
+	if [ $is_running = true ]; then
+		echo "Application is running."
+	else
+		echo "Application is not running."
+	fi
+}
 
-if [ $1 == "start" ]; then
+start() 
+{
         if [ $is_running = true ]; then
-                echo "Application is all ready running."
+                echo "Application is started."
                 exit 1
         else
                 main &
         fi
-fi
+}
 
-if [ $1 == "stop" ]; then
+stop()
+{
         if [ $is_running = true ]; then
                 pkill main
         else
                 echo "Application is not running."
                 exit 1
         fi
-fi
+}
+
+build()
+{
+	go install main.go
+}
+
+update() 
+{
+	git pull
+}
+
+
+case "$1" in
+	"status")
+		status()
+		;;
+	"start")
+		start()
+		;;
+	"stop")
+		stop()
+		;;
+	"build")
+		build()
+		;;
+	"update")
+		update
+		;;
+	*)
+		echo "To run script: ./site start|stop|status|build|update"
+		exit 1
+esac
+
+
