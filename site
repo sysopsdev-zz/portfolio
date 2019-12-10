@@ -48,24 +48,13 @@ update()
 
 
 case "$1" in
-	"status")
-		status()
-		;;
-	"start")
-		start()
-		;;
-	"stop")
-		stop()
-		;;
-	"build")
-		build()
-		;;
-	"update")
-		update
-		;;
-	*)
-		echo "To run script: ./site start|stop|status|build|update"
-		exit 1
+	"status")	status		;;
+	"start")	start		;;
+	"stop")		stop		;;
+	"build")	build		;;
+	"update")	update		;;
+	*)		echo "To run script: ./site start|stop|status|build|update"
+			exit 1		;;
 esac
 
 
