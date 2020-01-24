@@ -1,12 +1,30 @@
 body {
 	letter-spacing: 0.05em;
 /*	font-family: 'Source Code Pro', monospace; */
-    text-align: center;
+	text-align: center;
+	background: #111111;
+	color: #dddddd;
 }
 
 
 a i {
-    color: black;
+    color: #fb9401;
+}
+
+a {
+	color: #fb9401;
+}
+
+.bg-light {
+	background: #111112!important;
+}
+
+a.nav-link {
+	color: #fb9401!important;
+}
+
+h1, h2, h3, h4 {
+	color: #fb9401;
 }
 
 .content {
@@ -14,6 +32,20 @@ a i {
   width: 80%;
   text-align: left;
   overflow-y: overlay;
+}
+
+span.navbar-toggler-icon {
+	background: #fb9401;
+	color: #fb9401;
+}
+
+button.navbar-toggler {
+	background: #fb9401;
+	color: #fb9401;
+}
+
+strong {
+	color: #fb9401;
 }
 
 .center {
@@ -45,6 +77,6 @@ a i {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: white;
+	color: #dddddd;
 }
 
