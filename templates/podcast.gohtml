@@ -42,71 +42,95 @@
             <h1>Latest Episode</h1>
             <hr />
         <div class="content">
-  <iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/12921548/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/03f33c/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-<br> 
-<h3 id="c-17">C++17</h3>
+<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/13094219/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/38f508/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe><br> 
+<h2 id="linux-centric-processes-and-kernel-developers">Linux Centric, Processes, and Kernel Developers</h2>
+<h3 id="changing-directions">Changing Directions</h3>
 <ul>
-<li>Building GCC for C++17</li>
-<li>16 threads ~20 minutes</li>
-<li>Managing libraries</li>
-</ul>
-<h3 id="it-s-a-bug-not-a-feature">It&#39;s a Bug, Not a Feature</h3>
-<ul>
-<li>Execution</li>
-<li>TBB -- C++ template library</li>
-<li>Parallel Algorithms</li>
-</ul>
-<h3 id="multiple-versioning">Multiple Versioning</h3>
-<ul>
-<li>First time for everything</li>
-<li>lib64 vs lib</li>
-<li>Makefile</li>
-<li>Linking the library directory</li>
-</ul>
-<h3 id="c-crash-course-by-lospinoso">C++ Crash Course by Lospinoso</h3>
-<ul>
-<li>Excellent modern programming book</li>
-<li>Covers computer science topics</li>
-<li>Details into REAL programming<ul>
-<li>Networking</li>
-<li>Concurrency and Parallelism</li>
-<li>Filesystems</li>
-<li>Testing</li>
-<li>C++ Algorithms</li>
+<li>Why &quot;Linux&quot;?<ul>
+<li>Interests change over time</li>
+<li>Something I&#39;ve consistently gone back to</li>
+<li>My job and career</li>
+<li>Can&#39;t stay away</li>
 </ul>
 </li>
-<li>Parallel Sort<ul>
-<li>1 billion random vectors</li>
-<li>sort sequentially</li>
-<li>sort in parallel</li>
-<li>Boom, roasted</li>
+<li>Not a Revamp or a Refactor</li>
+<li>Continuing with same format<ul>
+<li>Not a news show</li>
+<li>Video is on hold</li>
+<li>Random raw VLOG/videos</li>
 </ul>
 </li>
 </ul>
-<h3 id="concurrency-vs-parallelism">Concurrency vs Parallelism</h3>
+<h3 id="process">Process</h3>
 <ul>
-<li>Concurrency<ul>
-<li>Two or more tasks in a time frame</li>
-<li>Scheduling via the OS to send instructions to each task</li>
+<li>What is a process?<ul>
+<li>Instance of a program running</li>
+<li>CPU instruction</li>
 </ul>
 </li>
-<li>Parallelism<ul>
-<li>Two or more tasks executing at the same time</li>
-<li>Scheduling has threads executing at the same time</li>
-<li>Race conditions</li>
+<li>What is a program?<ul>
+<li>File with information on how to construct a process</li>
+<li>Binary format identification (metadata) format of executable</li>
+<li>Machine-language instruction</li>
+<li>Entry point address, where should the program execution being?</li>
+<li>Data</li>
+<li>Symbols and relocation tables, locations and names of functions, objects, debug</li>
+<li>Shared-library and dynamic-linking information, lists of shared libraries needed at runtime</li>
+</ul>
+</li>
+<li>Types of processes<ul>
+<li>User initiated, interactive</li>
+<li>Background, daemon, automated</li>
+</ul>
+</li>
+<li>Daemon<ul>
+<li>Online with the system</li>
+<li>Haunt you forever, never die</li>
+<li>User can interface with daemons</li>
 </ul>
 </li>
 </ul>
-<h3 id="but-why-">BUT WHY?!</h3>
+<h3 id="linux-process">Linux Process</h3>
 <ul>
-<li>Forum Architecture<ul>
-<li>.NET Core</li>
-<li>JavaScript</li>
-<li>Ruuuuuuby</li>
+<li>Parent/Child<ul>
+<li>Child process: Existing process copies itself in memory</li>
+<li>New PID for child, but runs concurrently with the program on execution</li>
+<li>fork()</li>
+<li>Both processes continue with the next instruction</li>
+<li>Child has access to file, CPU registers, and I/O that parent has access to</li>
+<li>PID and PPID are used to identify and keep track of processes</li>
+<li>man page: The child process and the parent process run in separate memory
+   spaces.  At the time of fork() both memory spaces have the same
+   content.  Memory writes, file mappings (mmap(2)), and unmappings
+   (munmap(2)) performed by one of the processes do not affect the
+   other.</li>
+<li>Source code coming</li>
 </ul>
 </li>
-<li>Deeper understanding</li>
-<li>Systems programming</li>
+</ul>
+<h3 id="better-tools-for-kernel-developers">Better tools for kernel developers</h3>
+<ul>
+<li>Reliance on e-mail for Linux kernel maintainers</li>
+<li>Process is daunting to newcomers</li>
+<li>Tooling to assist<ul>
+<li>500 lines of Python</li>
+<li>Provide message ID for email in a thread of interest</li>
+<li>Entire thread downloaded and stored in local mbox file</li>
+</ul>
+</li>
+<li>Change in the process<ul>
+<li>Reading email threads</li>
+<li>Organizing patches</li>
+<li>Applying tags</li>
+</ul>
+</li>
+<li>Hesitance/resistance to change</li>
+<li>Do developer workflows need to change?<ul>
+<li>Why?</li>
+<li>Learn a newcomer vs ask for input</li>
+<li>Linux kernel is great as is</li>
+</ul>
+</li>
 </ul>
 
 
