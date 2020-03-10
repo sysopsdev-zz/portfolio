@@ -1,11 +1,11 @@
 package main
 
 import (
+	"admindev2/controllers"
 	"github.com/gorilla/handlers"
 	"html/template"
 	"net/http"
 	"os"
-	"projects/admindev2/controllers"
 )
 
 var tpl *template.Template
