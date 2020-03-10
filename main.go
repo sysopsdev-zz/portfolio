@@ -17,13 +17,9 @@ func init() {
 func main() {
 	c := controllers.NewController(tpl)
 	index := http.HandlerFunc(c.Index)
-	about := http.HandlerFunc(c.About)
-	resume := http.HandlerFunc(c.Resume)
 	podcast := http.HandlerFunc(c.Podcast)
 
 	http.Handle("/", loggingFunc(index))
-	http.Handle("/about", loggingFunc(about))
-	http.Handle("/resume", loggingFunc(resume))
 	http.Handle("/podcast", loggingFunc(podcast))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":5000", nil)
