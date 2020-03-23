@@ -33,49 +33,118 @@
             <h1>Latest Episode</h1>
             <hr />
         <div class="content">
-<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/13468001/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/03fb3f/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
-<p>Today I have the great pleasure of speaking with Lionel, a systems engineer with an incredible story about changing his career from a dead end job into the hustle and bustle of systems and software.</p>
-<p>Next episode I am going to dive into what I&#39;ve been learning about threads and race conditions.</p>
-<h3 id="introducing-lionel">Introducing Lionel</h3>
+<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/13663013/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/08f814/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+<h2 id="race-conditions">Race Conditions</h2>
+<h3 id="definition">Definition</h3>
 <ul>
-<li>Systems Engineer</li>
-<li>Ops, Dev, DBA</li>
-<li>Management side, day to day, how he got to where he is, biggest challenge</li>
+<li>Two or more processes are reading or writing some shared data and the final result depends on who runs precisely when.</li>
 </ul>
-<h3 id="threads-and-race-conditions">Threads and Race Conditions</h3>
+<h3 id="tanenbaum-example-printer-daemon-">Tanenbaum example (Printer daemon)</h3>
 <ul>
-<li>Sneak peak into next episode</li>
-<li>Golang tool</li>
-<li>Functional Programming</li>
-<li>Testing vs Design</li>
+<li>Process enters name of file in spooler dir</li>
+<li>Printer daemon checks to see if file need printing</li>
+<li>Prints and removes names from spooler dir</li>
+<li>Spooler dir has 0 ... infinity</li>
+<li>Two shared variables, output, point at file to be printed</li>
+<li>in, points to free slot in spooler dir</li>
+<li>Proc A and B queue file for printing<ul>
+<li>A reads in, stores slot 7 in variable</li>
+<li>Clock interrupt occurs</li>
+<li>B reads in, stores slot 7 in same variable</li>
+<li>B writes to slot 7, updates in to slot 8</li>
+<li>A writes to slot 7, erasing what B put there, updates in to slot 8</li>
+<li>Spooler dir now in sync</li>
+<li>B never receives output</li>
 </ul>
-<h3 id="lionel-interview">Lionel Interview</h3>
+</li>
+</ul>
+<h3 id="golang-example-incrementing-a-counter-">Golang example (Incrementing a counter)</h3>
 <ul>
-<li>Who are you</li>
-<li>What do you do</li>
+<li>Proc 1 read counter 0<ul>
+<li>Yield thread 0</li>
+<li>Increment counter 1</li>
 </ul>
-<h3 id="how-did-you-get-here-">How did you get here?</h3>
+</li>
+<li>Proc 2 read counter 0<ul>
+<li>Yield thread 0</li>
+<li>Increment counter 1</li>
+</ul>
+</li>
+<li>Proc 1 write counter 1</li>
+<li>Proc 2 write counter 1</li>
+<li>Proc 1 read counter 1<ul>
+<li>Yield thread 1</li>
+<li>Increment counter 2</li>
+</ul>
+</li>
+<li>Proc 2 read counter 1<ul>
+<li>Yield thread 1</li>
+<li>Increment counter 2</li>
+</ul>
+</li>
+</ul>
+<h3 id="go-isms">Go-isms</h3>
 <ul>
-<li>Your pressing situation</li>
-<li>Cranking out certs</li>
-<li>Getting the job</li>
+<li>go run -race main.go</li>
+<li>Don&#39;t communicate by sharing memory, share memory by communicating</li>
+<li>Passing on a channel the data structure or object. </li>
 </ul>
-<h3 id="tech-enthusiast">Tech Enthusiast</h3>
+<h3 id="avoiding-race-conditions">Avoiding Race Conditions</h3>
 <ul>
-<li>Favorite technology stack</li>
-<li>What interests you</li>
-<li>What motivates you</li>
-<li>Favorite part of your job</li>
+<li>No two processes may be simultaneously inside their critical regions.</li>
+<li>No assumptions may be made about speeds or the number of CPUs.</li>
+<li>No process running outside its critical region may block any process.</li>
+<li>No process should have to wait forever to enter its critical region.</li>
 </ul>
-<h3 id="more-about-lionel">More About Lionel</h3>
+<h3 id="mutal-exclusion">Mutal Exclusion</h3>
 <ul>
-<li>Current project</li>
-<li>Future work</li>
-<li>Biggest challenge</li>
-<li>Interest in WSL and WSL2</li>
-<li>Shout out to Josh Duffney and Hayden Barnes</li>
+<li>While a process is busy updating shared memory no other process will attempt to enter shared memory space. </li>
+<li>Disabling interrupts (Single CPU)<ul>
+<li>This approach is generally unattractive because it is unwise to give user processes the power to turn off interrupts.</li>
 </ul>
+</li>
+<li>Lock variables <ul>
+<li>Test the lock</li>
+<li>If 0 set to 1</li>
+<li>Before process can set 0 to 1, another process reads as 0</li>
+<li>The race now occurs if the second process modifies the lock just after the first process has finished its second check.</li>
+</ul>
+</li>
+<li>Busy Waiting<ul>
+<li>It should usually be avoided, since it wastes CPU time</li>
+</ul>
+</li>
+<li>Mutual Exclusion Algorithm: G. L. Peterson<ul>
+<li>Each process calls enter_region</li>
+<li>Wait, if necessary, until safe to enter shared memory region</li>
+<li>Process calls leave_region after done with shared memory </li>
+</ul>
+</li>
+</ul>
+<pre><code><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FALSE     0</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> TRUE     1</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N    2             / * number of processes * /</span>
+<span class="hljs-keyword">int</span> <span class="hljs-built_in">turn</span>;                / * whose <span class="hljs-built_in">turn</span> is it? * /
+<span class="hljs-keyword">int</span> interested[N];             / * all values initially <span class="hljs-number">0</span> (FALSE) * /
+
+<span class="hljs-keyword">void</span> enter region(<span class="hljs-keyword">int</span> <span class="hljs-built_in">process</span>);        / * <span class="hljs-built_in">process</span> is <span class="hljs-number">0</span> or <span class="hljs-number">1</span> * /
+{
+
+    <span class="hljs-keyword">int</span> other;             / * number of the other <span class="hljs-built_in">process</span> * /
+
+    other = <span class="hljs-number">1</span> − <span class="hljs-built_in">process</span>;        / * the opposite of <span class="hljs-built_in">process</span> * /
+    interested[<span class="hljs-built_in">process</span>] = TRUE;    / * show that you are interested * /
+    <span class="hljs-built_in">turn</span> = <span class="hljs-built_in">process</span>;            / * set flag * /
+    <span class="hljs-built_in">while</span> (<span class="hljs-built_in">turn</span> == <span class="hljs-built_in">process</span> &amp;&amp; interested[other] == TRUE) / * null statement * / ;
+}
+
+<span class="hljs-keyword">void</span> leave region(<span class="hljs-keyword">int</span> <span class="hljs-built_in">process</span>)        / * <span class="hljs-built_in">process</span>: who is leaving * /
+{
+    interested[<span class="hljs-built_in">process</span>] = FALSE;    / * indicate departure from critical region * /
+}
+</code></pre>
 
 
 <br>
