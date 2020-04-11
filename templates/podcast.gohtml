@@ -36,112 +36,12 @@
 
 <iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/13921244/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/13fb09/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
-<h2 id="semaphore-vs-mutex-vs-admindev">Semaphore vs Mutex vs AdminDev</h2>
-<h3 id="semaphore">Semaphore</h3>
-<ul>
-<li>More of a signal than a lock/unlock</li>
-<li>Integer value accessed through wait() and signal()</li>
-<li>wait() checks if the int is less than or equal to 0, decrements value</li>
-<li>signal() increments the integer value </li>
-</ul>
-<h3 id="semaphore-over-mutex">Semaphore Over Mutex</h3>
-<ul>
-<li>Mutex locks can have busy waiting. </li>
-<li>Semaphore wait() results in busy waiting, but a process can block itself with a wakeup() implementation </li>
-<li>Semaphore can still result in syncing issues</li>
-<li>Critical-Section: Two processes can be in the same section if the wait() and signal() sequence is not monitored </li>
-</ul>
-<h3 id="semaphores-in-os-dev">Semaphores in OS Dev</h3>
-<ul>
-<li>Counting semaphore<ul>
-<li>Value can range dramatically</li>
-<li>Control access to a given resource consisting of finite instances</li>
-<li>Semaphore is initialized to the given number of resources</li>
-<li>Each process that wants to use a resource performs wait() (lowering the value count)</li>
-<li>signal() is called when a process is finished utilizing a resource (increasing the value count)</li>
-<li>When count == 0, all resources are used</li>
-<li>Processes will block until count becomes greater than 0</li>
-</ul>
-</li>
-<li>Binary semaphore<ul>
-<li>Value can range between 1 and 0</li>
-<li>Similar to mutex locking</li>
-<li>Used in systems lacking mutual exclusion</li>
-</ul>
-</li>
-</ul>
-<h3 id="atomics-and-atomicity">Atomics and Atomicity</h3>
-<ul>
-<li>An atomic action is a group of related operations that execute without interruption or do not execute at all</li>
-<li>Operations isolated from other operations occurring at the same time</li>
-<li>Observed state is pending or complete, never partially complete. </li>
-<li>The Linux kernel</li>
-<li>A note on Golang<ul>
-<li>Package &quot;sync/atomic&quot;</li>
-<li>Low-level primitives for synchronization algorithms</li>
-<li>&quot;Share memory by communicating, don&#39;t communicate by sharing memory.&quot;</li>
-<li>Emphasis on low-level applications </li>
-</ul>
-</li>
-</ul>
-<h3 id="java-and-c-sitting-in-a-red-black-tree">Java and C, Sitting in a Red-Black Tree</h3>
-<ul>
-<li>My education vs my desires</li>
-<li>C teachings<ul>
-<li>What other langs do</li>
-<li>Why this costs</li>
-<li>What I&#39;ve learned</li>
-</ul>
-</li>
-<li>Java still in the mix</li>
-<li>Shell and Python</li>
-</ul>
-<h3 id="why-c-again-">Why C, Again?</h3>
-<ul>
-<li>OS and kernel development</li>
-<li>OS Dev Wiki<ul>
-<li>Prereqs</li>
-<li>Userland tools</li>
-<li>Assembly</li>
-</ul>
-</li>
-<li>All the cool kids do it!<ul>
-<li>The language of operating systems</li>
-<li>The language of networking</li>
-<li>The language of web and proxy</li>
-</ul>
-</li>
-</ul>
-<h3 id="new-format">New Format</h3>
-<ul>
-<li>Technical Buzzword Jargon Hell<ul>
-<li>Stuff like this :D </li>
-<li>CompSci, Unix and Linux, computer programming</li>
-</ul>
-</li>
-<li>Off topic<ul>
-<li>Book reviews (some tech, some not)</li>
-<li>M-m-m-mental and physical health</li>
-<li>Ranting and raving </li>
-</ul>
-</li>
-<li>NOT Tech News<ul>
-<li>Linux kernel stuff</li>
-<li>Unix-like conventions and meetups (BSD, Linux)</li>
-<li>Interesting sites, tips, and tricks</li>
-</ul>
-</li>
-<li>Long segment, short segment, short segment</li>
-<li>One long episode, two short episodes</li>
-<li>Intro music pending</li>
-</ul>
-<h3 id="let-me-know-">Let Me Know!</h3>
-<ul>
-<li>chris@admindev.tech</li>
-<li>forum.admindev.tech</li>
-<li>iTunes: <a href="https://podcasts.apple.com/us/podcast/admindev-labs/id1476478667">https://podcasts.apple.com/us/podcast/admindev-labs/id1476478667</a></li>
-<li>Stitcher: <a href="https://www.stitcher.com/podcast/the-rollbak/admindev-labs">https://www.stitcher.com/podcast/the-rollbak/admindev-labs</a></li>
-</ul>
+<h2>If I Could rollBak Time</h2>
+<br>
+<p>Today I catch up with Mike and Phil from The rollBak.</p>
+
+<p>We go into what's changed over the last year, new endeavors, why we think containers might be overkill, and more!</p>
+
 
 
 
