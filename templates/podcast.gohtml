@@ -34,15 +34,72 @@
             <hr />
         <div class="content">
 
-<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/13945787/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/38f707/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/14102993/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/1ff504/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
-<h2>If I Could rollBak Time</h2>
-<br>
-<p>Today I catch up with Mike and Phil from The rollBak.</p>
-
-<p>We go into what's changed over the last year, new endeavors, why we think containers might be overkill, and more!</p>
-
-
+<h2 id="bsd-administration-and-c-isms">BSD Administration and C-isms</h2>
+<h3 id="deploying-to-openbsd">Deploying to OpenBSD</h3>
+<ul>
+<li>Played with OpenBSD and HTTPD</li>
+<li>Not your Grandpa&#39;s HTTPD</li>
+<li>Based on relayd</li>
+<li>Features<ul>
+<li>Very similar to Nginx</li>
+<li>Macros</li>
+<li>Global conf</li>
+<li>Sever declaration </li>
+</ul>
+</li>
+<li>ACME Client<ul>
+<li>Automatic Certificate Management Environment (phew)</li>
+<li>Location blocks</li>
+<li>Connect with Let&#39;s Encrypt</li>
+</ul>
+</li>
+<li><em>Sane</em> Defaults<ul>
+<li>Say it with me</li>
+<li>Protections in place to protect the system admin and users</li>
+<li>You &quot;unlock&quot; what you want to use</li>
+</ul>
+</li>
+<li>Traffic <ul>
+<li>Couldn&#39;t tell (too low)</li>
+<li>Rendered/responded very well</li>
+<li>Basic stress testing showed no difference than Linux</li>
+</ul>
+</li>
+</ul>
+<h3 id="writing-in-userland">Writing in Userland</h3>
+<ul>
+<li>AKA user space<ul>
+<li>Kernel exposes itself via API</li>
+<li>Use system calls to hitup the kernel</li>
+<li>Interrupt happens, processes process, kernel goes on about day</li>
+</ul>
+</li>
+<li>Pointers, I/O, networking<ul>
+<li>Writing to file</li>
+<li>Allocating memory</li>
+<li>Sending packets</li>
+<li>Caching</li>
+</ul>
+</li>
+<li>Web server in C<ul>
+<li>Mainstream examples</li>
+<li>Smaller projects</li>
+</ul>
+</li>
+<li>Without VM or Garbage Collection</li>
+</ul>
+<h3 id="fun-filled-excitement">Fun Filled Excitement</h3>
+<ul>
+<li>Debian potentially migrating off E-mail</li>
+<li>First Book Review (dedicating whole episode)<ul>
+<li>Networking for Systems Administrators by Michael W Lucas</li>
+</ul>
+</li>
+</ul>
+<h3 id="web-server-source">Web Server Source</h3>
+<p><a href="https://github.com/LambdaSchool/C-Web-Server">https://github.com/LambdaSchool/C-Web-Server</a></p>
 
 
 <br>
