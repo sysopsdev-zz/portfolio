@@ -34,54 +34,63 @@
             <hr />
         <div class="content">
 
-<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/14558276/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/ffbd00/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/14676359/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/ff9900/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
-<h1 id="secbsd-openbsd-and-awk-oh-my">SecBSD, OpenBSD, and AWK OH MY</h1>
-<h2 id="secbsd">SecBSD</h2>
-<h3 id="why-secbsd-">Why SecBSD?</h3>
-<p>LINUX SUCKS</p>
-<p>Jk, don’t gank me bro. </p>
-<p>First heard about it on an interview with BSD Bandit.
-<a href="https://www.youtube.com/watch?v=Q-zSlKRqQY8">https://www.youtube.com/watch?v=Q-zSlKRqQY8</a></p>
-<p>“…nor do we want to have defaults that run tools as UID 0 (root). OpenBSD is our preferred platform, with the relentless focus on security, shipping with sane defaults, proper documentation and a thorough and constant auditing process.”</p>
-<p>Security researchers comfortable with OpenBSD/*BSD platforms. </p>
-<p>Bug hunters, bounty hunters, penetration testers wanting to flex on the Linux kernel. </p>
-<p>Probably need to know a little (see: a lot) about how Information Security/Offensive Security works. Stages and process of an engagement. Don’t treat this as gatekeeping treat it as an opportunity to learn. </p>
-<h3 id="offsec-tools">OffSec Tools</h3>
+<h3 id="doug-mcilroy">Doug McIlroy</h3>
 <ul>
-<li>aircrack ng</li>
-<li>arp scan</li>
-<li>burpsuite</li>
-<li>ccrypt</li>
-<li>cvechecker</li>
-<li>dnsrecon</li>
-<li>exploitdb</li>
-<li>f*ckshell</li>
-<li>nemesis</li>
-<li>nikto</li>
-<li>nmap</li>
-<li>pwndb</li>
-<li>snort</li>
-<li>sublist3r</li>
-<li>zaproxy
-Installing SecBSD</li>
-<li>Install OpenBSD</li>
-<li>Setup ports</li>
-<li>Clone SecBSD tools</li>
-<li>make &amp;&amp; make install</li>
+<li>Make each program do one thing well. To do a new job, build afresh rather than complicate old programs by adding new features.</li>
+<li>Expect the output of every program to become the input to another, as yet unknown, program. Don&#39;t clutter output with extraneous information.</li>
+<li>Design and build software, even operating systems, to be tried early, ideally within weeks. Don&#39;t hesitate to throw away the clumsy parts and rebuild them.</li>
+<li>Use tools in preference to unskilled help to lighten a programming task, even if you have to detour to build the tools and expect to throw some of them out after you&#39;ve finished using them.</li>
 </ul>
-<h2 id="openbsd">OpenBSD</h2>
-<h3 id="6-7-release">6.7 Release</h3>
+<h3 id="peter-h-salus">Peter H. Salus</h3>
 <ul>
-<li>Updating with a single command: sysupgrade </li>
-<li>Reboot process JUST WORKS. </li>
+<li>Write programs that do one thing and do it well.</li>
+<li>Write programs to work together.</li>
+<li>Write programs to handle text streams, because that is a universal interface.</li>
 </ul>
-<h2 id="awk">AWK</h2>
+<h3 id="rob-pike">Rob Pike</h3>
 <ul>
-<li>Blog post</li>
-<li>Loops, Decisions, Arrays</li>
-<li>Switch statement</li>
-<li>Passing arguments </li>
+<li>Rule 1. You can&#39;t tell where a program is going to spend its time. Bottlenecks occur in surprising places, so don&#39;t try to second guess and put in a speed hack until you&#39;ve proven that&#39;s where the bottleneck is.</li>
+<li>Rule 2. Measure. Don&#39;t tune for speed until you&#39;ve measured, and even then don&#39;t unless one part of the code overwhelms the rest.</li>
+<li>Rule 3. Fancy algorithms are slow when n is small, and n is usually small. Fancy algorithms have big constants. Until you know that n is frequently going to be big, don&#39;t get fancy. (Even if n does get big, use Rule 2 first.)</li>
+<li>Rule 4. Fancy algorithms are buggier than simple ones, and they&#39;re much harder to implement. Use simple algorithms as well as simple data structures.</li>
+<li>Rule 5. Data dominates. If you&#39;ve chosen the right data structures and organized things well, the algorithms will almost always be self-evident. Data structures, not algorithms, are central to programming.</li>
+</ul>
+<h3 id="dennis-ritchie-and-ken-thompson">Dennis Ritchie and Ken Thompson</h3>
+<ul>
+<li>Make it easy to write, test, and run programs.</li>
+<li>Interactive use instead of batch processing.</li>
+<li>Economy and elegance of design due to size constraints</li>
+<li>Self-supporting system: all Unix software is maintained under Unix.</li>
+</ul>
+<h3 id="esr">ESR</h3>
+<ul>
+<li>Modularity - Write simple parts connected by clean interfaces.</li>
+<li>Readable - Programs that are clean and clear.</li>
+<li>Composition - Programs connected to programs.</li>
+<li>Separation: Separate policy from mechanism; separate interfaces from engines.</li>
+<li>Simplicity: Design for simplicity; add complexity only where you must.</li>
+<li>Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.</li>
+<li>Transparency: Design for visibility to make inspection and debugging easier.</li>
+<li>Robust: Robustness is the child of transparency and simplicity.</li>
+<li>Representation: Fold knowledge into data so program logic can be stupid and robust.</li>
+<li>Least Surprise: In interface design, always do the least surprising thing.</li>
+<li>Silence: When a program has nothing surprising to say, it should say nothing.</li>
+<li>Repair: When you must fail, fail noisily and as soon as possible.</li>
+<li>Economy: Programmer time is expensive; conserve it in preference to machine time.</li>
+<li>Generation: Avoid hand-hacking; write programs to write programs when you can.</li>
+<li>Optimization: Prototype before polishing. Get it working before you optimize it.</li>
+<li>Diversity: Distrust all claims for “one true way”.</li>
+<li>Extensibility: Design for the future, because it will be here sooner than you think.</li>
+</ul>
+<h3 id="does-unix-matter-">Does Unix Matter?</h3>
+<ul>
+<li>Yes?</li>
+<li>We can still learn</li>
+<li>Do what makes sense</li>
+<li>Simplify everything</li>
+<li>Abstraction isn&#39;t the answer</li>
 </ul>
 
 
