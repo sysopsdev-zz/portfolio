@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if pgrep -x main > /dev/null
+if pgrep -x admindev2 > /dev/null
 then
         is_running=true
 else
@@ -22,14 +22,14 @@ start()
                 echo "Application is started."
                 exit 1
         else
-                main &
+                admindev2 &
         fi
 }
 
 stop()
 {
         if [ $is_running = true ]; then
-                pkill main
+                pkill admindev2
         else
                 echo "Application is not running."
                 exit 1
@@ -38,8 +38,9 @@ stop()
 
 build()
 {
-	go install main.go
+	go install
 }
+
 
 update() 
 {
