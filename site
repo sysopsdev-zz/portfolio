@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if pgrep -x admindev2 > /dev/null
+if pgrep -x admindev > /dev/null
 then
         is_running=true
 else
@@ -22,14 +22,14 @@ start()
                 echo "Application is started."
                 exit 1
         else
-                admindev2 &
+                admindev &
         fi
 }
 
 stop()
 {
         if [ $is_running = true ]; then
-                pkill admindev2
+                pkill admindev
         else
                 echo "Application is not running."
                 exit 1
