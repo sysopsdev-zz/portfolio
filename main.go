@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/gorilla/handlers"
+	"admindev/controllers"
 	"html/template"
 	"net/http"
 	"os"
-	"projects/admindev/controllers"
+
+	"github.com/gorilla/handlers"
 )
 
 var tpl *template.Template
@@ -17,10 +18,8 @@ func init() {
 func main() {
 	c := controllers.NewController(tpl)
 	index := http.HandlerFunc(c.Index)
-	podcast := http.HandlerFunc(c.Podcast)
 
 	http.Handle("/", loggingFunc(index))
-	http.Handle("/podcast", loggingFunc(podcast))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":5000", nil)
 }
