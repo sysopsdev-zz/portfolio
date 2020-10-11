@@ -1,10 +1,11 @@
 package main
 
 import (
-	"admindev/controllers"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
+	"portfolio/controllers"
 
 	"github.com/gorilla/handlers"
 )
@@ -25,9 +26,10 @@ func main() {
 }
 
 func loggingFunc(h http.Handler) http.Handler {
-	logFile, err := os.OpenFile("admindev.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0640)
+	logFile, err := os.OpenFile("portfolio.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0640)
 	if err != nil {
-		panic(err)
+		log.Fatalf("failed to open log: %v", err)
 	}
+
 	return handlers.LoggingHandler(logFile, h)
 }
