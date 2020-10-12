@@ -16,12 +16,14 @@ func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
 }
 
+// TODO: Database logic
 func main() {
 	c := controllers.NewController(tpl)
 	index := http.HandlerFunc(c.Index)
 
 	http.Handle("/", loggingFunc(index))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.HandleFunc("/favicon.ico", faviconHandler)
 	http.ListenAndServe(":5000", nil)
 }
 
@@ -32,4 +34,8 @@ func loggingFunc(h http.Handler) http.Handler {
 	}
 
 	return handlers.LoggingHandler(logFile, h)
+}
+
+func faviconHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./static/images/favicon.ico")
 }

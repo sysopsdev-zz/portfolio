@@ -1,10 +1,13 @@
 body {
-          background: aliceblue;
-	  padding: 20px;
-	  max-width: 700px;
-	  width: 80%;
-	  margin: 20px auto;
-	  font-family: Source Sans Pro;
+	padding: 20px;
+	max-width: 700px;
+	width: 80%;
+        margin: 20px auto;
+        font-family: Source Sans Pro;
+}
+
+.intro {
+        border: 10px solid #bdc3c7;
 }
 
 h1 {
@@ -14,14 +17,14 @@ h1 {
 
 
 hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 
 a i {
-    color: black;
+        color: black;
 }
 
 a {
@@ -29,10 +32,12 @@ a {
 }
 
 .center {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-    overflow-y: overlay;
-    text-align: center;
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+        overflow-y: overlay;
+        text-align: center;
 }
+
+
 
